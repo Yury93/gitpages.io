@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity WebGL Player | ninja</title>
+    <title>Unity WebGL Player | WView</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
@@ -20,7 +20,7 @@
       <div id="unity-footer">
         <div id="unity-webgl-logo"></div>
         <div id="unity-fullscreen-button"></div>
-        <div id="unity-build-title">ninja</div>
+        <div id="unity-build-title">WView</div>
       </div>
     </div>
     <script>
@@ -64,8 +64,8 @@
         codeUrl: buildUrl + "/ArcadiaBuild.wasm.unityweb",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
-        productName: "ninja",
-        productVersion: "0.1.0",
+        productName: "WView",
+        productVersion: "1.0",
         showBanner: unityShowBanner,
       };
 
@@ -99,13 +99,15 @@
       }
 
       loadingBar.style.display = "block";
-
+      var  myGameInstance = null;
       var script = document.createElement("script");
       script.src = loaderUrl;
-      script.onload = () => {
+        script.onload = () => {
+          
         createUnityInstance(canvas, config, (progress) => {
           progressBarFull.style.width = 100 * progress + "%";
-              }).then((unityInstance) => {
+        }).then((unityInstance) => {
+            myGameInstance = unityInstance;
                 loadingBar.style.display = "none";
                 fullscreenButton.onclick = () => {
                   unityInstance.SetFullscreen(1);
