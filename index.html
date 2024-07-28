@@ -99,11 +99,10 @@
       }
 
       loadingBar.style.display = "block";
-      var  myGameInstance = null;
+        var myGameInstance = null;
       var script = document.createElement("script");
       script.src = loaderUrl;
-        script.onload = () => {
-          
+      script.onload = () => {
         createUnityInstance(canvas, config, (progress) => {
           progressBarFull.style.width = 100 * progress + "%";
         }).then((unityInstance) => {
